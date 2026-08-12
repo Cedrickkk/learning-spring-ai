@@ -1,3 +1,15 @@
 spring:
   application:
     name: learning-spring-ai
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        model: llama3.2:latest
+
+server:
+  port: 8081
+
+logging:
+  level:
+    org.springframework.ai: DEBUG

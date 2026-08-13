@@ -5,7 +5,8 @@ spring:
     ollama:
       base-url: http://localhost:11434
       chat:
-        model: llama3.2:latest
+#        model: llama3.2:latest
+        model: qwen2.5vl:7b
 
 server:
   port: 8081

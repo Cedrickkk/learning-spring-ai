@@ -5,6 +5,7 @@ import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.scheduling.config.Task;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
@@ -45,6 +46,13 @@ public class TaskManagementTools {
         Task task = new Task(taskId, title, description, assignee, TaskStatus.PENDING);
         tasks.put(taskId, task);
         return new TaskResult(taskId, title, "PENDING", assignee, "Task created successfullyb and assigned to " + assignee);
+    }
+
+    public List<TaskResult> getAllTasks() {
+        System.out.println(tasks);
+        return tasks.values().stream()
+                .map(t -> new TaskResult(t.id(), t.title(), t.status().name(), t.assignee(), null))
+                .toList();
     }
 
 }

@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/tasks")
 public class TaskManagementController {
@@ -25,6 +27,11 @@ public class TaskManagementController {
                 .user(message)
                 .call()
                 .content();
+    }
+
+    @GetMapping("/list")
+    public List<TaskManagementTools.TaskResult> listTasks() {
+        return taskManagementTools.getAllTasks();
     }
 
 }
